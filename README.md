@@ -218,7 +218,10 @@ Esos son los 4 pasos del flujo de trabajo.
    - Si el modelo no cumple con las expectativas, hay que aplicar "_tunearlo_" y repetir el paso 3 hasta obtener los resultados deseados.
 
 ---
-## **Capítulo 2:** _Machine Learning_ Supervisado
+## **Capítulo 2: Métodos de Aprendizaje del _Machine Learning_**
+
+2.1 Aprendizaje Supervisado
+---
 
 El aprendizaje supervisado es básicamente una máquina de etiquetado, toma una observación y le asigna una etiqueta.
 
@@ -306,4 +309,8 @@ Hay dos métodos de aprendizaje supervisado:
      - Uno de unos cuantos valores específicos
        - Frío, templado, caluroso...
        - Bebé, niño, adolescente, adulto...
+
+---
+2.2 Aprendizaje No Supervisado
+---
 
