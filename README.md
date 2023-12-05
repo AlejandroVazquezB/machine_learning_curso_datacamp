@@ -1,12 +1,12 @@
 # Entendiendo _Machine Learning_
 _Traducido y documentado por Alejandro Vázquez B._
 
----
 ## **Introducción**
 
-### **Cap. 1:** ¿Qué es _Machine Learning?_
----
-Primero hay que hablar del termino: **Inteligencia Artifical** (IA). Hoy en día cuando la gente habla de _IA's_, suele referirse (sin saberlo) al _Machine Learning_.
+## **Capítulo 1:** ¿Qué es _Machine Learning?_
+
+
+Para entender qué es el _Machine Learning_ primero hay que hablar del termino: **Inteligencia Artifical** (IA). Hoy en día cuando la gente habla de _IA's_, suele referirse (sin saberlo) al _Machine Learning_.
 
 La Inteligencia Artificial es un conjunto de herramientas para hacer que las computadoras tengan un "comportamiento" inteligente. Estas herramientas abarcan subcampos tales como la robótica y el _Machine Learning_.
 
@@ -20,7 +20,7 @@ Comparemos las tareas de inferencia y predicción para comprender mejor lo que p
 
 
 ---
-1.1 ¿Qué puede hacer el _Machine Learning_?
+### 1.1 ¿Qué puede hacer el _Machine Learning_?
 ---
 
 - **Predice** eventos futuros:
@@ -40,7 +40,7 @@ Estas tareas pueden trabajar juntas porque las inferencias ayudan a hacer predic
 
 
 ---
-1.2 ¿Cómo funciona el _Machine Learning_?
+### 1.2 ¿Cómo funciona el _Machine Learning_?
 ---
 Los métodos de aprendizaje automático se basan principalmente en las las estadísticas y la informática. Es una herramienta extremadamente poderosa debido a que le brinda a las computadoras la capacidad de aprender sin ser programadas explícitamente para hacerlo. Es decir, la computadora puede aprender sin instrucciones paso a paso.
 Esencialmente el aprendizaje automático aprende patrones de datos existentes y los aplica a nuevos datos. Por ejemplo, puede procesar correos electrónicos archivados para saber cómo se ve el spam por sí solo, después, usando lo que aprendió, puede detectar spam en nuevos correos electrónicos. Es necesario aclarar que para que el aprendizaje automático sea exitoso, necesita datos de alta calidad.
@@ -53,7 +53,7 @@ Esencialmente el aprendizaje automático aprende patrones de datos existentes y 
 
 
 ---
-1.3 Relación con la ciencia de datos
+### 1.3 Relación con la ciencia de datos
 ---
 La ciencia de datos se trata de descubrir y comunicar información a partir de los datos. El aprendizaje automático suele ser una herramienta importante para el trabajo de ciencia de datos, especialmente para hacer predicciones a partir de datos.
 
@@ -74,20 +74,20 @@ Por ejemplo, si hacemos un modelo basado en datos históricos de tráfico, podem
 
 
 ---
-### **Cap. 2:** Tipos de _Machine Learning_
+### 1.5 Tipos de aprendizaje
 ---
 Anteriormente se dijo mencionó que el _Machine Learning_ "aprende" patrones de datos existentes y los aplica a nuevos, dichos datos existentes son llamados "**datos de entrenamiento**". Cuando se está construyendo un modelo y aprendiendo de los datos de entrenamiento, lo llamamos "entrenar un modelo". Esto puede tomar desde nanosegundos, hasta semanas, dependiendo del tamaño de los datos.
 
 Los datos de entrenamiento marcan la principal diferencia entre los tipos existentes de métodos de aprendizaje.
 
 ---
-2.1 Aprendizaje Reforzado
+#### 1.5.1 Aprendizaje Reforzado
 ---
 
   El aprendizaje reforzado es utilizado para decidir acciones secuenciales, como un robot que decide su camino o su próximo movimiento en un juego de ajedréz. No es tan común como el resto de métodos de aprendizaje y utiliza matemáticas complejas, como la teoría de juegos. El aprendizaje supervisado y el no supervisado son los más comunes.
 
 ---
-2.2 Aprendizaje Supervisado
+#### 1.5.2 Aprendizaje Supervisado
 ---
 Nos gustaría entrenar un modelo para predecir si un paciente tiene una enfermedad cardíaca, por lo que se capturan registros existentes de pacientes que han experimentado dolores en el pecho y han sido examinados para detectar enfermedades del corazón. Nuestra variable objetivo (_target objective_) es "_Heart Disease_" (enfermedad cardíaca), porque esto es lo que queremos predecir.
 
@@ -122,7 +122,7 @@ Las características alimentan el modelo y a su vez, el modelo genera su predicc
 Es así como funciona esta técnica de aprendizaje automático, utilizando datos existentes de entrenamiento "etiquetados" para alimentar el modelo y en función a dichas etiquetas, se realiza una predicción de nuestro objetivo. Por ejemplo, sabíamos si los pacientes anteriores tenían enfermedades del corazón en función de las etiquetas "True" y "False".
 
 ---
-2.3 Aprendizaje No Supervisado
+#### 1.5.3 Aprendizaje No Supervisado
 ---
 
 A diferencia del **Aprendizaje Supervisado**, el **Aprendizaje No Supervisado** no se vale de etiquetas, sino únicamente de las características.
@@ -145,7 +145,7 @@ En realidad, los datos no siempre vienen con etiquetas, o es demasiado trabajo m
 En este sentido, el modelo no está supervisado y encuentra sus propios patrones.
 
 ---
-### **Cap. 3:** Flujo de ejecución
+### 1.6 Flujo de trabajo
 ---
 
 Hasta ahora, sabemos que los datos de entrenamiento se usan para permitir que un modelo aprenda, luego ese modelo s epuede usar para hacer predicciones pero, **¿cuáles son los pasos intermedios?**
@@ -217,4 +217,93 @@ Esos son los 4 pasos del flujo de trabajo.
 4. Evaluar el modelo
    - Si el modelo no cumple con las expectativas, hay que aplicar "_tunearlo_" y repetir el paso 3 hasta obtener los resultados deseados.
 
+---
+## **Capítulo 2:** _Machine Learning_ Supervisado
+
+El aprendizaje supervisado es básicamente una máquina de etiquetado, toma una observación y le asigna una etiqueta.
+
+Hay dos métodos de aprendizaje supervisado: 
+1. **Clasificación:** consiste en asignar una categoría a una observación, estamos prediciendo una variable discreta, una variable que sólo puede tomar unos cuantos valores diferentes.
+   - "¿Este cliente detendrá su suscripción?"
+     - Sí, No.
+   - "¿Qué clase de vino es este?"
+     - Rosado, Tinto, Blanco.
+   - "¿Qué flor es esa?"
+     - Rosa, Clavel, Tulipán.
+   
+   Por ejemplo, de la siguiente table tomemos las admisiones universitarias donde queremos predecir la aceptación. Para simplificar, mostramos dos características: GPA y Resultados de la Prueba (_Test Results_).
+
+   ![MLS clasificación](https://i.imgur.com/0LrT84I.png)
+
+   Se podría tener más funciones, como: participación en organizaciones estudiantiles, deportes o premios que hayan ganado los solicitantes, etc.
+
+   El objetivo es lo que queremos prececir y hay dos etiquetas posibles _True_ o _False_, que quiere decir, si son aceptados en la universidad o no.
+
+   ![MLS objetivo](https://i.imgur.com/5sETjqX.png)
+
+   El objetivo sólo puede contener una de esas dos etiquetas, lo que lo convierte en un problema de clasificación.
+
+   A continuación se muestran las observaciones trazadas:
+
+   ![MLS grafico estado de solicitudes](https://i.imgur.com/Ne5fLcM.png)
+   _Gráfica sobre los aspirantes aceptados y no aceptados por la universidad._
+
+   Los puntos azules representan a los solicitantes aceptados, los puntos rojos representan a los solicitantes rechazados.
+   Mantenemos el 80% de nuestros datos para entrenar nuestro modelo.
+
+   ![MLS grafico clasificación manual de de solicitudes](https://i.imgur.com/mLO3SZ3.png)
+   _Grafico clasificación manual de solicitudes de aspirantes_
+
+   Debido a que sólo usamos dos funciones, podemos trazar e interpretar los resultados. Para nosotros, los humanos, es bastante claro; el gráfico demuestra que si se obtiene un puntaje superior a 4 tanto en el GPA como ne la prueba de ingreso, es aceptado. Si agregaramos más funciones como extracurriculares o premios, necesitaríamos más ejes y sería muy díficil para nosotros interpretar los datos con nuestro ojo humano. Sin embargo, un modelo no lucharía en lo absoluto. Podríamos usar una máquina de soporte de vectores, suena temible, pero sólo es una línea que separa nuestros puntos. Así entrenamos nuestro algoritmo y clasificamos el 20% de las observaciones que dejamos de lado.
+
+   ![MLS grafico máquina de soporte de vectores - clasificación líneal de solicitudes de aspirantes](https://i.imgur.com/epxOcX8.png)
+   _Grafico máquina de soporte de vectores: clasificación líneal de solicitudes de aspirantes_.
+   
+   Sólo clasifica errónamente dos puntos azules como rojos, lo que significa que se predijo erróneamente que dos solicitantes fueran rechazados.
+   
+   El problema es que intenta separarse con una línea recta, por lo que es poco probable que lo haga mejor que eso, pero, ¿Qué pasaría si permitimos una línea curva? Hay maneras para modificar el comportamiento de un modelo, como permitir curvas, por ejemplo:
+
+   ![MLS grafico máquina de soporte de vectores - clasificación polinomial de solicitudes de aspirantes](https://i.imgur.com/nUhxL6u.png)
+   _Grafico máquina de soporte de vectores: clasificación polinomial de solicitudes de aspirantes_
+
+   ¡Ahora clasifica todo correctamente!
+
+
+2. **Regresión:** Asigna una variable continua que puede tomar cualquier valor. Por ejemplo:
+   - ¿Cuánto valdrá esta acción?
+   - ¿Qué tan alto será ese niño cuando crezca?
+   - ¿Cuál será la masa de éste exoplaneta?
+
+   Para ejemplificar utilicemos lecturas meteorológicas para predecir la temperatura:
+
+   ![MLC tabla lecturas meteorológicas](https://i.imgur.com/mzL5cpi.png)
+   
+   ¿Podemos predecir la temperatura en función del porcentaje de humedad?, usamos el 80% de los datos para entrenar nuestro modelo. Parece que cuando sube la humedad, baja la temperatura.
+
+   ![MLC gráfica de evolución de la temperatura basada en la humedad](https://i.imgur.com/U5IdryN.png)
+   _Gráfica de evolución de la temperatura basada en la humedad_
+
+   De hecho, nuestro modelo de regresión lineal capta esto:
+
+   ![MLC gráfica de evolución de la temperatura basada en la humedad](https://i.imgur.com/GpPpj1Z.png)
+   
+   ![MLC gráfica de evolución de la temperatura basada en la humedad 2](https://i.imgur.com/i0iySQG.png)
+   _Gráficas regresión líneal sobre la evolución de la temperatura basada en la humedad_
+
+   Según nuestro modelo, si el índice de humedad es 0.5, entonces la temperatura es de 18.5 C°.
+
+   Y es así como se comporta el modelo en datos reales. Identificó la tendencia, pero sigue siendo malo para predecir. Más características como el viento, nubosidad, ubicación, temporada, entre otras; podrían hacerlo más preciso.
+
+   **El método de aprendizaje supervisado debe ser elegido a conciencia, considerando si desea enmarcar un problema como el problema como uno de regresión o uno de clasificación.**
+   
+   #### En resumen:
+
+   - Regresión == Valores Continuos
+     - Cualquier valor finito (altura) o intervalo infinito (tiempo) 
+       - Una temperatura exacta: 20 C°, 18 C°, 45 C°...
+   
+   - Clasificación == Etiquetas de Categorías
+     - Uno de unos cuantos valores específicos
+       - Frío, templado, caluroso...
+       - Bebé, niño, adolescente, adulto...
 
