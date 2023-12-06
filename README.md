@@ -400,3 +400,112 @@ Por ejemplo, es probable que las personas que compran mermelada compren pan, las
   - Agrupa las observaciones con función en lo que se le solicite
   - Detecta anomalías en las observaciones
   - Asocia las observaciones entre sí
+
+---
+2.3 Evaluación del rendimiento
+---
+
+Recordemos el paso 4 del flujo de trabajo.
+
+![Paso 4 modelo final](https://i.imgur.com/IDUMOHV.png)
+
+Lo primero que se busca evaluar es el _overfitting_ (sobreajuste). Es **cuando nuestro modelo funciona muy bien con los datos de entrenamiento, pero mal con los datos de prueba.** 
+
+Cuando esto ocurre significa que nuestro modelo aprendió el entrenamiento establecido de memoria y es incapaz de aplicar los aprendizajes a nuevos _datasets_, que es lo que originalmente queríamos. Es por ello que necesitamos dividir nuestro conjunto de datos en dos conjuntos.
+
+
+Por ejemplo, la línea verde aquí se sobreajusta, haciendo todo lo posible para clasificar los puntos perfectamente, por lo tanto, funciona muy bien en este conjunto de datos, pero deficientemente en datos no vistos.
+
+![ER: overfitting ejemplo](https://i.imgur.com/WqD3R7H.png)
+
+La línea negra comete más errores en ese _dataset_, pero generaliza mejor.
+
+#### _Accuracy_ (precisión)
+En el ejemplo de la aceptación universitaria, ¿cómo mediríamos el desempeño del modelo? Podríamos usar la precisión (_accuracy_), que es el número de las observaciones clasificadas correctamente (OCC) divididas entre la cantidad total de observaciones (CTO).
+
+***_Accuracy_ = OCC / CTO***
+
+![ER: Accuracy](https://i.imgur.com/6CmiXMM.png)
+
+Sin embargo, la precisión no es siempre la mejor métrica para evaluar el rendimiento de un modelo.
+
+Considere el fraude donde sólo una pequeña minoría de transacciones son fraudulentas. Dígamos que entrenenamos un modelo para predecir si una transacción es fraudulenta o legítima.
+
+Aquí hay un gráfico que muestra su rendimiento en 30 puntos de datos de prueba:
+
+![ER: Limite de la precisión - ejemplo de fraude](https://i.imgur.com/SI8QJeI.png)
+
+_Limite de la precisión: ejemplo de fraude_
+
+Sólo clasifica erróneamente 2 puntos, lo que le da una precisión de alrededor del 93%, lo que suena bien. Pero el modelo en realidad pasa por alto la mayoría de las transacciones fraudulentas, lo cual sería un problema si implementamos éste modelo en el mundo real. Incluso podemos decir que todos los puntos son legítimos y obtendríamos una precisión del 90%, pero no detectamos a todos los estafadores.
+
+Para subsanar estos conflictos se introdujo la matríz de confusión.
+
+#### Matriz de Confusión
+
+En el ejemplo, se predijo una transacción fraudulenta que en verdad era fraudulenta, de manera que se agrega un 1 a la matriz donde la columna Valores actuales 
+
+
+|             ||          Valores Actuales          | Valores Actuales|
+| --          | --              | --                | --              |
+|             |                 | Fraudulentos      | No Fraudulentos |
+| Predichos   | Fraudulentos    | 1                 |         0       |
+| Predichos   | No Fraudulentos | 2                 |         27      |
+
+![ER: Matriz de confusión](https://i.imgur.com/Pr2YeB9.png)
+
+#### Interpretación de la matriz
+- Los **Verdaderos Positivos**, son puntos clasificados correctamente. En este caso, sólo hay un punto fraudulento clasificado correctamente como fraudulento en el área roja.
+
+- Los **Falsos Negativos** so observaciones fraudilentas que se clasifican incorrectamente como legítimas. En este caso se han clasificado 2, representadas por los 2 puntos rojos en el área azul.
+Los Falsos negativos son como decirle a una mujer embarazada que no está embarazada
+
+- Los **Falsos positivos** son observaciones legítimas que se clasifican incorrectamente como ilegítimas. En este caso hay 0.
+
+- Los **Verdaderos Negativos** son observaciones legítimas predichas clasificadas correctamente como legítimas en la predicción. En este caso hay 27 puntos legítimos predichos correctamente como no fraudulentos.
+
+  Si sumamos todos los cuadrangulares de la matriz se debería obtener el total de observaciones, que en este caso es de 30 puntos.
+
+#### Sensibilidad (_Sensitivity_)
+Recordemos que estábamos en busca de una métrica que funcionara mejor que la presición (_accuracy_) para medir el rendimiento de nuestro modelo en nuestro caso específico de fraude, y es aquí donde entra en juego la **sensibilidad**. Esta valora la predicción precisa de transacciones fraudulentas específicamente valorando más los verdaderos positivos.
+
+**Fórmula de la Sensibilidad**
+
+| Sensibildad |
+| --          |
+|Sensibilidad = Verdaderos Positivos / (Verdaderos Positivos + Falsos Positivos)|
+|![ER: formula sensibilidad](https://i.imgur.com/BOhKuMk.png)|
+|*_No es necesario aprenderla de memoria_*|
+||
+
+En este caso obtuvimos una sensiblidad del 33%, la cual es una mala puntuación. **Optimizar la sensiblidad significa que preferimos marcar transacciones legítimas como sosopechosas antes que autorizar transacciones fraudulentas.**
+
+Ahora vemos que nuestro modelo no es bueno para predecir el fraude y necesita mejoras. 
+
+#### Especifidad (_Specificity_)
+Por otro lado tenemos la **especifidad** que valora los verdaderos negativos.
+
+**Fórmula de la Especifidad (_Specificity_)**
+
+| Especifidad |
+| --          |
+|Especifidad = Verdaderos Negativos / (Verdaderos Negativos + Falsos Positivos)|
+|*_No es necesario aprenderla de memoria_*|
+||
+
+Esta es una métrica útil para los filtros de spam. Para un usuario es preferible enviar correo no deseado a la bandeja de entrada principal, antes que enviar correos reales a la carpeta de correo no deseado.
+
+Esa es la clasificación.
+
+---
+### Evaluación de la Regresión
+Esencialmente, queremos la diferencia entre el valor real y el valor predicho. Esta puede ser la distancia entre los puntos y la línea predicha.
+
+![ER: Evaluacion de la regresión](https://i.imgur.com/P61Afdp.png)
+
+Hay varias formas de calcular este error, como el error cuadrático medio, pero esta es la idea general.
+
+---
+
+#### ¿Y qué sucede con el Aprendizaje No Supervisado?
+Recuerde que éste no tiene variables predichas, por lo que no hay una salida correcta con la que comparar. El rendimiento de su modelo de aprendizaje no supervisado depende del problema que esté resolviendo. Por lo tanto, usted evalúa el desempeño en función de qué tan bien los resultados avanzan en su objetivo inicial.
