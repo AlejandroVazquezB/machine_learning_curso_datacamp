@@ -296,11 +296,8 @@ Hay dos métodos de aprendizaje supervisado:
    Según nuestro modelo, si el índice de humedad es 0.5, entonces la temperatura es de 18.5 C°.
 
    Y es así como se comporta el modelo en datos reales. Identificó la tendencia, pero sigue siendo malo para predecir. Más características como el viento, nubosidad, ubicación, temporada, entre otras; podrían hacerlo más preciso.
-
-   **El método de aprendizaje supervisado debe ser elegido a conciencia, considerando si desea enmarcar un problema como el problema como uno de regresión o uno de clasificación.**
-   
+  
    #### En resumen:
-
    - Regresión == Valores Continuos
      - Cualquier valor finito (altura) o intervalo infinito (tiempo) 
        - Una temperatura exacta: 20 C°, 18 C°, 45 C°...
@@ -308,9 +305,98 @@ Hay dos métodos de aprendizaje supervisado:
    - Clasificación == Etiquetas de Categorías
      - Uno de unos cuantos valores específicos
        - Frío, templado, caluroso...
-       - Bebé, niño, adolescente, adulto...
+     - Bebé, niño, adolescente, adulto...
+
+**El método de aprendizaje supervisado debe ser elegido a conciencia, considerando si desea enmarcar un problema como el problema como uno de regresión o uno de clasificación.**
 
 ---
 2.2 Aprendizaje No Supervisado
 ---
 
+El Aprendizaje No Supervisado es bastante similar al Aprendizaje Supervisado, excepto que no tiene como objetivo una columna específica, de ahí la parte no supervisada.
+
+### Entonces, ¿cúal es el punto?
+Lo que vuelve realmente interesante y poderoso al Aprendizaje No Supervisado es que aprende del conjunto de datos e intenta encontrar patrones, es decir, podemos encontrar información sin saber muhco sobre nuestro conjunto de datos, lo que lo hace ideal para tratar con cantidades enormes de datos díficiles de interpretar a _"ojo de buen cubero"_.
+
+
+
+### 2.2.1 Aplicaciones
+Puede tener diversas aplicaciones, principalmente la agrupación, detección de anomalías y asociaciones. 
+
+#### Agrupación (_clustering_)
+Consiste en identificar grupos en su conjunto de datos. Las observaciones en estos grupos comparten similitudes más fuertes con miembros de su grupo, que con miembros de otros grupos.
+
+Por ejemplo, dígamos que tenemos un conjunto de datos con seis observaciones, ¿Qué grupos detectaría el algoritmo?
+
+![Aprendizaje No Supervisado: Agrupacion de especies](https://i.imgur.com/7e14qlW.png)
+_Ejemplo del conjunto de datos_
+
+Es una pregunta cuya respuesta depende de diversos factores.
+
+Del conjunto de datos original pueden surgir dos grupos: "Perros" y "Gatos".
+
+![Aprendizaje No Supervisado: Agrupacion de especies por raza](https://i.imgur.com/ipq5lvJ.png)
+
+O bien, podría hacer cuatro grupos por color: negro, gris, blanco y café.
+
+![Aprendizaje No Supervisado: Agrupacion de especies por color](https://i.imgur.com/M1xHCWD.png)
+
+También podría agrupar los elementos del conjunto de datos por país origen, en este caso: "Europa" y "Japón".
+
+![Aprendizaje No Supervisado: Agrupacion de especies por nacionalidad](https://i.imgur.com/mT5ZFZX.png)
+
+Se ha ejemplificado lo que representa cada grupo, sin embargo, en la práctica no se suele tener conocimiento sobre qué diferencia a los _clústeres_ (grupos); el modelo no le dirá por qué o cómo se decidió formar los grupos. Dependerá de usted investigar y averiguarlo.
+
+**Modelos de _clustering_**
+- _K Means_:
+  - Requiere especificar de antemano el número de clústeres que le gustaría identificar
+- DSCAN _(density-based spatial clustering of applications with noise)_:
+  - No requiere que especifique el número de clústeres por adelantado. En cambio, requieren que defina qué constituye un grupo, como el número mínimo de observaciones en un grupo.
+  
+Dígamos que tenemos flores de especies desconocidas y todo lo que conocemos es su ancho y largo del pétalo:
+
+![ANS Dataset](https://i.imgur.com/ZdlF7S4.png)
+
+Ahora el problema de clasificación se vuelve visible. Aquí no tenemos una columna con etiquetas de la especie, ni siquiera sabemos con cuáles y cuántas especies estamos hay.
+
+Si planteamos la hipótesis de que hay 4 especies, podemos usar _K Means_ y requerir 4 _clusters_ distintos.
+
+![ANS K-Means 4 clusters](https://i.imgur.com/fbZCRki.png)
+
+ Si suponemos que hay 3 especies, necesitamos 3 _clusters_ diferentes. Estos grupos son realmente correctos, ya que hay tres especies en el conjunto de datos: _Setosa, Virginica_ y _Versicolor_.
+
+ ![ANS K-Means 3 clusters](https://i.imgur.com/CGy1itt.png)
+
+
+ #### Detección de anomalías
+La detección de anomalías consiste en detectar valores atípicos _(outliers)_.
+Los valores atípicos son observaciones que difieren bastante del resto. En la siguiente imagen, todos los puntos están agrupados en la parte inferior izquierda, excepto uno en la parte superior derecha.
+
+![ANS Detección de Anomalías](https://i.imgur.com/EbXwLX0.png)
+
+Resulta que ese pinto es la suma total de las otras observaciones , la fila total no se eliminó antes de trazar los datos. En este caso, eliminar del conjunto de datos (_dataset_) el valor atípico nos permitiría apreciar de mejor manera el gráfico, tal como se muestra a continuación.
+
+![ANS Detección de Anomalías 2](https://i.imgur.com/RrmNrRM.png)
+
+Con dos dimensiones, es sencillo encontrar valores atípicos a simple vista. Intente encontrar valores atípicos e 3 dimensiones; eso podría ser factible, pero, ¿qué tal 4, 10, 20, 100?, es por eso que necesitamos métodos de aprendizaje no supervisados.
+
+En el ejemplo anterior tratamos la anomalía como un error, pero las anomalías no deben ser tratadas siempre como errores, su detección nos permitiría, por ejemplo, descubrir qué dispositivos fallan más rápido que otros, descubrir personas mal intencionadas que vulneran un sistema o algún paciente que sorprendentemente sea resistente a una enfermedad mortal. La detección de anomalías permite descubrir cualquier evento poco común en cualquier tipo de contexto.
+
+#### Asociación
+La asociación nos permite encontrar relaciones entre datos observados. En otras palabras, se trata de encontrar eventos que suceden juntos.
+
+Un uso común de esta característica es el análisis del un carrito de compras virtual, que se trata únicamente de "¿Qué objetos se compran juntos?".
+
+![ANS Asociación: carrito de compras](https://i.imgur.com/H2xUTHt.png)
+
+Por ejemplo, es probable que las personas que compran mermelada compren pan, las personas que compran  cerveza compre bótanas y las personas que compren vino probablemente compren queso.
+
+
+#### En resumen
+- Aprendizaje No Supervisado = Análisis sin un objetivo específico
+  - Sin gúia
+  - Análiza el conjunto de datos en su totalidad
+  - Intenta detectar patrones
+  - Agrupa las observaciones con función en lo que se le solicite
+  - Detecta anomalías en las observaciones
+  - Asocia las observaciones entre sí
