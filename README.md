@@ -509,3 +509,99 @@ Hay varias formas de calcular este error, como el error cuadrático medio, pero 
 
 #### ¿Y qué sucede con el Aprendizaje No Supervisado?
 Recuerde que éste no tiene variables predichas, por lo que no hay una salida correcta con la que comparar. El rendimiento de su modelo de aprendizaje no supervisado depende del problema que esté resolviendo. Por lo tanto, usted evalúa el desempeño en función de qué tan bien los resultados avanzan en su objetivo inicial.
+
+---
+2.4 Mejorando el desempeño
+---
+
+Ahora que ya sabes cómo elegir entre clasificación, regresión o técnicas de aprendizaje no supervisado y cómo evaluar sus resultados.
+
+Después de evaluar nuestro modelo, tenemos que decidir si el rendimiento es lo suficientemente bueno.
+
+![2.4 MD diagrama](https://i.imgur.com/uZGfJxn.png)
+
+Existen varias opciones para mejorar su modelo en caso de que no esté satisfecho con su rendimiento, pero nos centraremos en tres.
+
+---
+####  **2.4.1 Reducción de la dimensionalidad**
+
+**Dimensión:** Una dimensión denota la cantidad de características (_features_) en sus datos.
+
+| Técnica | Funcionamiento |
+| ------- | -------------- |
+Reducción de la<br>dimensionalidad | Elimina características completamente irreleventes. Demuestra que más información no es siempre mejores predicciones.
+
+**Ejemplo**  
+Para predecir cuánto tiempo nos tomará llegar a la oficina; la hora del día y el clima son factores interesantes, pero es poco probable que la cantidad de vasos que bebimos ayer sea muy útil.
+
+![2.4.1 ejemplo](https://i.imgur.com/sLfijXB.png)
+
+Algunas características pueden estar altamente correlacionadas y llevar información similar, podríamos mantener una sola característica y agún tener la mayor parte de la información.
+Por ejemplo, la altura y el tamaño de un zpato están altamente correlacionados. Es muy probable que las personas altas tengan una talla de zapatos grande.  
+También podríamos colapsar varias funciones en una sola función subyacente. Si tenemos dos características, como la altura y el peso podríamos calcular una característica de índice de masa corporal en su lugar.
+
+---
+#### **2.4.2 Ajuste de Hiperparámetros**
+
+**Hiperparámetro:**  
+Es un parámetro, del modelo, que uno elige antes de comenzar su entrenamiento.
+
+antes de comenzar el entrenamiento.
+Un modelo de aprendizaje automático es como una consola de producción musical, dependiendo de si estás mezclando música _pop_, _rap_ o _heavy metal_ se deben aplizarlos ajustes pertinentes a los instrumentos y la voz.  
+Algunos ajustes sonarán mejor con ciertos géneros que con otros. Bueno, en nuestro caso, el género es el conjunto de datos y la configuración de los instrumentos son los hiperparámetros. Dependiedo del _dataset_, diferentes valores de hiperparámetros´darán mejores o peores resultados.
+
+|Técnica | Funcionamiento|
+|--------|---------------|
+|Ajuste de <br> hiperparámetros|Se trata de personalizar los ajustes específicamente para los requerimientos del modelo de aprendizaje automático.|
+
+**Ejemplo**  
+Cuando entrenamos la SVM en la primera lección del capítulo, cambiamos de una línea recta a una curva.
+
+![MLS grafico máquina de soporte de vectores - clasificación líneal de solicitudes de aspirantes](https://i.imgur.com/epxOcX8.png)
+
+![MLS grafico máquina de soporte de vectores - clasificación polinomial de solicitudes de aspirantes](https://i.imgur.com/nUhxL6u.png)
+
+Eso es porque ajustamos el hiperparámetro "nucleo" de "lineal" a "polinomio"
+
+<p align = "center">
+
+|_kernel: 'linear' --> 'poly'_|
+|----|
+</p>
+
+Hay muchos más hiperparámetros que se pueden ajustar en el modelo SVM:
+* C
+* degree
+* gamma
+* shrinking
+* coef-
+* tol
+* ...
+
+Jugar con diferentes valores para cada hiperparámetro afectará el rendimiento de nuestro modelo. No tienes que adivinar combinaciones al azar, hay combinaciones estructuradas maneras de encontrar los valores óptimos, pero eso está fuera del alcance de este curso.
+
+---
+
+#### **2.4.3 Métodos de conjunto**
+
+|Técnica| Funcionamiento |
+|----|----|
+|Métodos de Conjunto|La última opción que queremos cubrir son los métodos de conjunto. Esto es una técnica que combina varios modelos para producir un modelo óptimo.|
+
+<br>
+
+Imagina que estamos usando tres modelos diferentes: A, B y C.  
+
+![MD 2.4.3 metodos de conjunto](https://i.imgur.com/wM14YVj.png)
+
+En un entorno de clasificación, usaríamos la votación. Si el modelo A y C dicen que el estudiante es aceptado y el modelo B dice que no, entonces se acepta la observación, ya que fue la predicción más común entre todos los modelos.  
+
+![MD 2.4.3 metodos de conjunto 2](https://i.imgur.com/bisCq8E.png)
+
+En una configuración de regresión, usamos el promedio. Si el modelo A predice una temperatura de 5°, el modelo B una temperatura de 8° y el Modelo C una temperatura de 4°, a la observación se le asigna el valor promedio 5.67°
+
+![MD 2.4.3 metodos de conjunto 3](https://i.imgur.com/20iQH06.png)  
+
+---
+
+---
