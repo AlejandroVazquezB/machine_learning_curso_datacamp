@@ -603,5 +603,474 @@ En una configuración de regresión, usamos el promedio. Si el modelo A predice 
 ![MD 2.4.3 metodos de conjunto 3](https://i.imgur.com/20iQH06.png)  
 
 ---
+## **Capítulo 3: _Deep Learning_**
+
+El _Deep Learning_ (aprendizaje profundo), utiliza un algoritmo llamado **_Neural Networks_** (Redes Neuronales), que están vagamente inspirados en las redes neuronales biológicas del cerebro humano. Las neuronas, también llamadas: "nodos", son la unidad básica de las redes neuronales.  
+El _Deep Learning_ es un tipo especial de aprendizaje automático que puede resolver más problemas complejos, pero requiere muchos más datos que el aprendizaje automático tradicional. Se utiliza mejor en los casos en que las entradas están menos estructuradas, como grandes cantidades de texto o imágenes.  
 
 ---
+### **3.1 Funcionamiento**
+
+---
+Imagina que trabajas para un estudio de _Hollywood_ y quieres predecirlos ingresos de taquilla de una próxima película.  
+Tiene acceso a un conjunto de datos que mapea los ingresos de taquilla de películas pasadas a su presupuesto de producción.  
+
+Como puede ver, se puede dibujar una línea recta a través de los datos, lo que demuestra que a mayor presupuesto, mayor ingresos por taquilla. La línea roja es un ejemplo de una predicción de un modelo simple.
+
+![DL:_3.1_Funcionamiento](https://i.imgur.com/43DZ45l.png)  
+
+Una red neuronal actúa de manera distinta para realizar predicciones. En este caso, la red neuronal que lograría esto se puede dibujar de la siguiente manera:
+
+![DL:3.1_Funcionamiento_2](https://i.imgur.com/Xph4fuo.png)
+
+El presupuesto se pasa como entrada a una neurona que calcula la curva roja y genera ingresos de taquilla.
+
+Suponga que ha obtenido acceso a más información. Además del presupuesto de producción, también save cuánto ha gastado el estudio en publicidad, cuál es el "poder estelar" (influencia de los actores) determinado por el número de seguidores en Twitter de los actores, por ejemplo, y el momento del estreno de la película. Veamos cómo luce una red neuronal más compleja.
+
+Primero, considere esta neurona, cuyo trabajo es estimar el gasto en función del presupuestyo y los costos publicitarios.
+
+![DL:3.1_Funcionamiento_RN_3](https://i.imgur.com/T7wRF89.png)
+
+La segunda neurona reastrea qué tan enteradas están las personas de que la película se ha estrenado. Las dos cosas que alimentan eso son la publicidad y el poder estelar. Cuanto más famosos sean los integrantes del reparto, más gente estará al tanto de la película.
+
+![DL:3.1_Funcionamiento_RN_4](https://i.imgur.com/iNPhF1K.png)
+
+Así que la segunda neurona es responsable de la conciencia.
+
+![DL:3.1_Funcionamiento_RN_5](https://i.imgur.com/f88kJmu.png)
+
+Por último, entrarán en juego las decisiones de distribución que tome el estudio. El presupuesto, la publicidad y el momento de lanzamiento se alimentan de esta neurona, que representa la distribución de la película.
+
+![DL:3.1_Funcionamiento_RN_6](https://i.imgur.com/LwhUMKl.png)
+
+![DL:3.1_Funcionamiento_RN_7](https://i.imgur.com/71JmyV9.png)
+
+Finalmente, ahora que las neuronas anteriores han descubierto la importancia de estos conceptos de nivel superior, necesitamos agregar una neurona más que tome estos tres factores como entrada y genere los ingresos de taquilla estimados.
+
+![DL:3.1_Funcionamiento_RN_8](https://i.imgur.com/Z5MBNWK.png)
+
+Así es como nuestra red neuronal está formada y lista para predecir el ingreso taquillero.  
+
+Su trabajo es mapear las relaciones entre diferentes combinaciones de variables al resultado deseado.
+
+A partir de la explicación parecía que tuviéramos que averiguar relaciones clave como el gasto, notoriedad y la distribución.
+
+![DL:3.1_Funcionamiento_RN_9](https://i.imgur.com/qMN1MRp.png)
+
+Para entrenar una red neuronal, todo lo que necesita es tener un conjunto de datos de entrenamiento. El algoritmo analiza y descubre por sí mismo todas las conexiones entre las neuronas.
+
+El ejemplo anterior se trata de una red neuronal bastante simple, en realidad las redes neuronales son mucho más largas e incluyen miles de neuronas; llegados a ese punto, se usa el término _Deep Learning_.  
+
+![DL:3.1_Funcionamiento_RN_9](https://i.imgur.com/FIBoxzj.png)
+_Representación de una Red Neuronal_
+
+---
+#### **3.2 Cuándo Utilizar _Deep Learning_**
+
+---
+
+Se recomienda utilizar el algoritmo de _Deep Learning_ en los siguientes casos:
+
+1. El tamaño de los datos que se desea analizar es demasiado grande  
+
+2. Se cuenta con una PC potente 
+   
+3. Cuando no se tiene conocimiento de los datos que se van a procesar (la red neuronal resuelve los problemas por ti)
+
+4. Cuando se trata de problemas complejos como:
+   1. Visión artificial
+   2. Procesamiento del lenguaje natural
+
+---
+#### Resumen
+_Deep Learning_  
+- AKA: _Neural Networks_
+  - Unidad Básica: Neurona
+  - Las neuronas se alimentan de otras neuronas
+  - Son bastante grandes
+  - Poseen muchas neuronas
+  - Resuelven problemas complejos
+- Área especial del _Machine Learning_
+- Requiere más datos
+- Es buena opción si los _inputs_ son imágenes o texto
+- Si el los datos a analizar no son muchos, se recomienda utilizar algoritmos tradicionales de aprendizaje automático
+- Requiere computadoras poderosas para entrenar en un tiempo razonable
+
+---
+### **3.3 Procesamiento**
+
+---
+
+En el capítulo anterior se habló de que el _Deep Learning_ es especialmente útil cuando se trata de procesar imágenes y texto. En éste capítulo nos centraremos en las imágenes y cómo se utilizan en las aplicaciones de visión artificial.
+
+---
+#### 3.3.1 Visión Artificial _(Computer Vision)_
+---
+
+El objetivo de la visión artificial es ayudar a entender a las computadores el contenido de las imágenes digitales. La visión artificial es necesaria para habilitar, por ejemplo, los coches autónomos 🚗🚙  
+Fabricantes como Tesla, BMW, Volvo y Audi utilizan múltiples cámaras para adquirir imágenes del entorno para que los automóviles puedan detercar objetos y señalamientos de tránsito para conducir con seguridad. 
+
+![DL:3.3.1_VA](https://i.imgur.com/A0lcDtq.png)
+
+---
+Para entender cómo funciona, primero debemos saber cómo se ven los datos de una imagen.
+
+Una imagen está compuesta por píxeles, cada píxel contiene información sobre el color y la intensidad. En la imagen puedes apreciar una imagen en escala de grises pixelada. Cada pixel puede representar la intensidad con un valor entero que va desde el 0 hasta el 255.
+
+![DL:3.3.1_VA_2](https://i.imgur.com/4FWtn8x.png)
+
+---
+
+En cuanto a las imágenes a color, están representadas por medio del Sistema RGB, RGB son las iniciales de los colores _rojo_, _verde_ y _azul_ en inglés.  
+Cada imagen puede ser representada por 3 cuadrículas, una de cada color del sistema RGB. Esto sifnifica que se necesita tres veces la cantidad de datos para almacenar una imagen a color que una imagen en escala de grises (como la anterior).
+
+![DL:3.3.1_VA_3](https://i.imgur.com/EDXdH7F.png)
+
+De manera que las imagenes digitales pueden ser vistas como un montón de números y esos números pueden ser utilizados como características para un modelo de _Machine Learning_.
+
+---
+
+Imagina que quieres hacer un sistema para reconocer a las personas de las fotografías.
+
+El paso número uno es conseguir algunas fotografías y usarlas como entradas para dicho modelo.
+
+![DL:3.3.1_VA_4](https://i.imgur.com/Kweo6xq.png)
+
+La el valor que representa la intensidad de cada pixel se pasará a una red neuronal y su trabajo será identificar a la persona de la fotografía. Entonces las neuronas intermedias entre las neuronas de entrada y las de salida procesarán los valores por sí mismas; típicamente cuando se alimenta una red neuronal con imagenes, las neuronas de las primeras fases del algoritmo aprenden a detectar bordes, después los bordes de las objetos, como los ojos y naríz, por ejemplo, mientras que las neuronas de las etapas complementarias aprenderán a detectar la forma de los rostros. Al final, la red neuronal reunirá toda esta información para identificar a la persona de la imagen 💁🏿‍♀️
+
+No olvides que parte de la magia de las redes neuronales es que no necesitas preocuparte por entender lo que sucede _'under the hood'_ en la sección intermedia de las de la red neuronal. Lo único que necesitas hacer es darle muchas imágenes de caras, las características, así como la identidad correcta, las etiquetas y durante el entrenamiento el algoritmo descubrirá por sí mismo cuál de las neuronas del medio debería estar trabajando 🖥️🧠💥
+
+![3.3.1_VA_5](https://i.imgur.com/9gcYfhG.png)
+
+---
+
+Muchas aplicaciones y empresas bastante populares utilizan esta tecnología de la visión artificial. Por ejemplo: 
+- Facebook cuando detecta tu rostro en una fotografía publicada
+
+- Tesla en sus coches autónomos para evitar siniestros
+
+- Escáneres de tomografía computarizada para identificar tumores durante exámenes médicos
+
+- entre muchas otras tecnologías con las que convivimos día a día
+
+---
+
+Aunque la aplicación de la tecnología de la visión artificial va más allá que sólo comprender e identificar imágenes, también es capaz de generar imágenes súper realistas y de toda clase de estilos artísticos. Por ejemplo, __Deep Fake__, es un _software_ que se usa para poner el rostro de las personas en videos en los que ni siquiera aparecen. _Deep Fake_ entiende cuáles son las características del rostro humano y gracias a ello puede generar caras nuevas y/o de alguien más y agregar movimiento.
+
+_Deep Fake_ gifs: 
+
+![VA:3.2.1_DF1](https://media.giphy.com/media/Tb3pSooj6OvUVDgZli/giphy.gif)
+![VA:3.2.1_DF2](https://media.giphy.com/media/ee8P9T5yW9eBJMhHSM/giphy.gif)
+![VA:3.2.1_DF3](https://media.giphy.com/media/8cKrUOJD5RdSnCHbkp/giphy.gif)
+![VA:3.2.1_DF3](https://i.imgur.com/6O8ktW2.png)
+
+---
+#### __Nota ajena al curso__
+Llegados a éste punto quisiera invitar al lector a hacer una labor de instrospección y pensar en las implicaciones éticas que conlleva utilizar estos tipos de programas 👽
+
+![VA:3.2.1_jesus_is_watching_you](https://i.imgur.com/NHj1xJj.png)
+
+---
+
+## 3.4 Procesamiento del Lenguaje Natural _(Natural Language Processing)_
+
+Anteriormente se mencionó que el _Deep Learning_ funciona especialmente bien cuando se trata de procesar imágenes y texto. Ya aprendimos sore el procesamiento de imágenes y la Visión Artificial, ahora es el turno del procesamiento del texto como un lenguaje natural
+
+El __Procesamiento del Lenguaje Natural__ o __NLP__ (por sus siglas en inglés) es la capacidad de las computadoras para entender el significado de las sentencias, oraciones y palabras que conforman el lenguaje humano.
+
+En la siguiente imagen se puede apreciar cómo por medio del NLP la computadora es capaz de localizar y clasificar las palabras por su propia naturaleza en sus respectivas categorías predefinidas, como los nombres de personas y ubicaciones.
+
+![3:NLP_1](https://i.imgur.com/4BPcE8I.png)
+
+### 3.4.1 Técnica NLP: __*Bag of Words*__
+
+Al alimentar un modelo entradas de tipo texto, la manera más simple de procesarle es contar cuántas veces aparecen palabras importantes en una pieza de texto. Ésta técnica es llamada **Bag of Words** 👜 
+
+![3.1:Funcionamiento_Bag_of_Words](https://i.imgur.com/NhFvzPF.png)
+
+
+Supongamos que queremos analizar las siguientes sentencias:
+
+1. "U2 es una gran banda! 🤘"
+2. "Queen es una gran banda! 🤘"
+
+
+|Palabras|Sentencia #1|Sentencia #2|
+|---|---|---|
+||_"U2 es una gran banda"_|_"Queen es una gran banda"_|
+|U2|1|0|
+|Queen|0|1|
+|es|1|1|
+|una|1|1|
+|gran|1|1|
+|banda|1|1|
+---
+#### *__Bag of words: n-grams__*
+
+Ahora veamos la siguiente sentencia:
+1. "Ese libro no es bueno"
+
+|Palabras|No. de apariciones|
+|---|---|
+|Ese|1|
+|libro|1|
+|no|1|
+|es|1|
+|bueno|1|
+---
+
+Al contar las palabras de manera individual, "bueno" es agregado a la lista, a pesar de que el sentimiento que se transmite en la oración es justamente lo opuesto a ser bueno, esto puede ser resuelto contando las secuencias de las palabras; a ésta técnica se le conoce como **_'n-grams'_**. 
+<br>
+
+---
+
+#### **_2-gra (bi-gram)_**
+
+
+|Palabras|No. de apariciones|
+|---|---|
+|Ese libro|1|
+|libro no|1|
+|no es|1|
+|es bueno|1|
+---
+
+Aquí estamos cotando palabras en secuencias de pares, lo que nos permite obtener más información.  
+
+_Bag of Words_ es una técnica bastante útil y utilizada para el NLP. Tiene lagunas limitaciones, pero su simpleza permite obtener resultados bastante impresionantes.
+
+---
+### 3.4.1.2 Limitaciones y Propiedades
+
+- El conteo de palabras no considera sinónimos
+  - Por ejemplo:
+    - azul
+    - azul-Cielo
+    - aqua
+    - lapizlazuli
+    - cerúleo
+
+Para solucionar ese conflicto se utiliza una técnica llamada **_Word Embeddings_**. Lo que hace es crear relaciones entre palabras similares con el fin de crear una categoría específica para dichos grupos y otorgarles la misma característica. Así todas las variantes de azul que se mencionaron en el ejemplo, se agruparan como "colores azulados" y con esto superar la limitante de los sinónimos.  
+
+Otra propiedad interesante de los **_Word Embeddings_** es que son representaciones matemáticas de palabras que siguen reglas intuitivas.
+
+Por ejemplo, si tomamos las características de "Rey", substraemos las características de "Hombre" y agregamos las características de "Mujer", así nos acercamos bastante a un _set_ de características cercanas a las de "Reina".
+
+![NLP:3.1_word_embeddings](https://i.imgur.com/j2BFC10.png)
+
+*<p align="center"> Rey - Hombre + Mujer = **Reina**</p>*
+
+---
+
+### 3.5 Traducción del lenguaje
+
+Después de mapear palabras u oraciones a números, con la técnica __*Bag of Words*__ podemos darlos como entrada a una red neuronal cuyo trabajo es traducir la oración de entrada a un idioma distinto. Aquí tenemos la frase holandesa _"Met of zonder jou"_, traducida como: _"With or without you"_ (con o sin ti).
+
+![NLP:3.5_1](https://i.imgur.com/QbbDJAu.png)
+
+El procesamiento del lenguaje natural es la fuerza impulsora detrás de las siguientes aplicaciones comunes: 
+- Traductores
+  - _Google Translate_
+- _Chatbots_ entre clientes y empresa
+- Asistentes personales
+  - Siri
+  - Alexa
+- Análisis de sentimientos, usado para cuantificar cuán positiva o negativa es la emoción expresada por un segmento de texto
+- Entre muchas otras
+---
+
+### Resumen
+
+<h4>¿Por qué razón se prefiere el <i>Deep Learning</i> cuando se trabaja con datos de imagen y texto?</h4>  
+
+1. Son problemas son bastante complejos y las redes neuronales son mucho mas eficientes que los algoritmos tradicionales de aprendizaje automático.
+
+2. A menudo no está claro cuáles deberían ser las características del modelo para los datos de texto e imagen. El _Deep Learning_ no requiere intervención humana y puede aprender las características por sí solo, como qué píxeles forman una nariz 
+
+3. Cuando se trabaja con este tipo de datos, suele haber cantidades inmensas de ellos. Incluso una sola imagen puede constar de millones de píxeles y un cuerpo de texto puede contener millones de palabras. Los algoritmos tradicionales de aprendizaje automático se quedan atrás al intentar procesar cantidades másivas que sólo continuan incrementando, mientras que el rendimiento del modelo un modelo de _Deep Learning_ incrementa a la par que incrementa la cantidad de datos.  
+<br>   
+
+---
+
+#### Conceptos
+
+- __*Natural Language Processing (NLP)*__: es la capacidad de las computadoras para entender el significado del lenguaje humano.
+  
+- **_Word Embeddings_**: capturan el significado contextual de las palabras e identifica si existe una relación entre las palabras para agruparlas por categorías; permitiendo superar así el impedimento de procesar sinónimos de la técnica **_Bag of Words_**. 
+
+---
+## 4. Límitantes del _Machine Learning_
+
+Hasta ahora hemos visto la amplia gama de posibilidades que nos ofrecen los algoritmos del _Machine Learning_, pero también tiene sus limitaciones.
+
+---
+
+### 4.1 Calidad de los datos
+
+Una frase conocida en el ámbito del _Machine Learning_ es:
+<p align="center"> <b><i>"Entra basura, sale basura"</i></b></p>
+
+![4.1:Calidad_datos](https://i.imgur.com/cjSTKNf.png)
+
+Básicamente significa que la calidad de la información de salida que arroje el modelo, será tan buena como la calidad de los datos de entrada. Con datos de calidad precaria se obtendrán resultados desacertados, incompletos o incoherentes. 
+
+---
+
+### 4.1.1 Casos de fracaso
+
+A continuación veremos algunos casos que servirán para ejemplificar y comprender las consecuencias que puede ocasionar un mal entrenamiento para un modelo de _Machine Learning_.
+
+### Caso Amazon
+Entre el 2014 y 2017, el departamento de recursos humanos de Amazon utilizó un programa que hacía uso de Inteligencia Artifical (IA) para apoyar el proceso de reclutamiento de personal; el programa revisaba los currículums (CVs) recibidos y hacía recomendaciones específicas.
+
+Después se descubrió que el modelo prefería a los candidatos masculinos sobre los femeninos debido a que estaba entrenado con los CVs que había recibido la compañía durante la última década, y durante esa década se habían contratado muchos más hombres que mujeres.
+
+El modelo degradaba los currículos que contenían la palabra "mujer", por ejemplo, al detectar que el candidato era una mujer o que había asistido a una universidad para mujeres.
+
+### Caso Microsoft: _AI Chatbot_
+
+Microsoft fue noticia en 2016 cuando anunció su nuevo _chatbot_ "Tay", el cual podría responder automáticamente a las personas y entablar una conversación informal en _Twitter_.
+
+A medida que más personas conversaran con Tay, el _chatbot_ aprendería a mantener mejores conversaciones. Lo que ocurrió en menos de 24 horas después del lanzamiento de Tay, los _trolls_ de internet habían corrompido la personalidad del _chatbot_. Tay comenzó a twittear cosas bastante ofensivas. Su capacidad innata para aprender significó que internalitzó parte del lenguaje que aprendió de los _trolls_.
+
+El bot terminó publicando _twits_ sumamente racistas y ofensivos para la población afroaméricana y la judía. Además de expresar su apoyo hacia el líder que lideró el gobierno alemán durante la Segunda Guerra Mundial; hasta que terminaron desactivándolo.
+
+![4.1:microsoft_chatbot](https://i.imgur.com/fWZm3Xp.png)
+![4.1:microsoft_chatbot](https://i.imgur.com/1WHBLnS.png)
+
+---
+
+Si bien es cierto que estos sucesos podrían clasificarse como rotundos fracasos, son eventos que nos han servido para aprender y multiplicar el cuidado a la hora de alimentar con datos a los modelos de _Machine Learning_ y no confiar ciegamente en ellos.
+
+---
+
+### 4.1.2 Cómo asegurar la calidad de los datos
+
+Datos de alta calidad requiere:
+
+- Análisis de datos
+  - Incluídas:
+    - Características
+    - Distribución
+    - Fuente
+    - Relevancia
+
+- Revisión de valores atípicos
+  - Excepciones
+  - Cualquier cosa que se destaque como sospechosa
+
+- Dominio de conocimientos
+  - Pericia para explicar patrones de datos inesperados
+
+- Documentación
+  - Proceso:
+    - Transparente
+    - Repetible
+
+---
+
+### 4.2 Explicabilidad
+---
+
+La segunda limitación que discutiremos es la explicabilidad.
+
+![4.2:explicabilidad](https://i.imgur.com/Jef2HH0.png)
+
+Uno de los mayores desafíos de la IA es que, a menudo, los modelos de aprendizaje automático se consideran cajas negras. Sin embargo, a veces es necesario que lis sistemas sean transparentes sobre el razonamiento que utiliza, para aumentar la confianza, la claridad y la comprensión.
+
+
+![4.2:explicabilidad_2](https://i.imgur.com/YWTKKyy.png)
+
+Por ejemplo, tendrás que ser capaz de explicar tu modelo para obtener la aceptación empresarial de un cliente, demostrar que estás cumpliendo con las leyes en relación a los datos, y permitir una detección de sesgos más rápida y efectiva. 
+
+----
+
+### 4.2.1 **_Explainable AI_** (IA Explicativa)
+
+---
+
+Durante éste capítulo hemos estado hablando sobre el _Deep Learning_, pero no se ha discutido sobre el gran inconveniente que es la falta de explicabilidad. Aunque el _Deep Learning_ puede hacer predicciones muy precisas, no siempre está claro por qué el modelo hace una predicción específica.
+
+Los métodos que nos permiten comprender los factores que conllevan al modelo a cada predicción también se como conoce como **_Explainable IA_**.
+
+Examinemos un problema típico en la IA explicable.  
+Supongamos que un hospital está utilizando un modelo tradicional de aprendizaje automático para analizar los datos de los pacientes con diabetes.
+
+
+---
+
+**Esta es la parte explicable**  
+El modelo entrenado puede decirnos dos cosas:
+
+1. Puede predecir la aparición de diabetes tipo 2
+   - **Predicción:** El paciente tendrá diabetes?
+
+2. Puede decir qué características fueron importantes para tomar tal decisión
+   - **Inferencia:** Por qué ocurrirá esto  
+---
+<br>
+Esta explicabilidad adicional puede proporcionar información importante para los médicos, como si la presión arterial fuera un predictor importante de diabetes en el futuro 
+
+---
+
+Compare ese ejemplo con un problema típico de _Deep Learning_.
+
+![4.2.1_explicabilidad_3](https://i.imgur.com/i8JOQ0a.png)
+
+Supongamos que queremos reconocer las letras escritas a mano.
+
+---
+**Predicción:** ¿Qué letra es?
+
+---
+Realmente no nos importa por qué una imagen en particular se clasificó como "A", siempre que las predicciones sean muy precisas.
+
+El _Deep Learning_ es una solución perfecta para este problema porque no nos importa la explicabilidad en este caso. 
+
+---
+#### Resumen
+
+- Basura entra <--> Basura sale
+  
+- La calidad de las salidas dependerá de la calidad de las entradas
+
+- Tu modelo será tan bueno como los datos con el que lo alimentes
+  
+- _Explainable IA_: Se refiere a la capacidad de comprensión de las predicciones de los modelos
+
+- Utilizar _Deep Learning_ si no se requiere explicar el procedimiento por el cual se llegó a las predicciones del modelo
+
+---
+## Repaso
+---
+
+- Capítulos
+  1. _¿Qué es el Machine Learning?_
+     - Definición y relación con la ciencia de datos y la inteligencia artificial
+     - Fundamentos y flujo de trabajo
+     ![Paso 4 modelo final](https://i.imgur.com/IDUMOHV.png)
+
+  2. Métodos de Aprendizaje del _Machine Learning_
+     - Tipos de _Machine Learning_
+     - Evaluación y mejora de los modelos de _Machine Learning_
+     - ![Repaso:cap_2](https://i.imgur.com/qQbERiw.png)
+
+  3. _Deep Learning_
+     - Visión Artificial
+     - Procesamiento de Lenguaje Natural
+     - Casos de uso
+     ![Repaso:cap_3](https://i.imgur.com/LAE2Pns.png)
+
+  4. Limitantes del _Machine Learning_
+     - Calidad de los datos
+     - Casos de Fracaso
+     - Explicabilidad
+
+---
+### Felicitaciones!
+Hasta aquí ha llegado el contenido de éste curso.
+
+Si aprendiste algo nuevo siéntete orgulloso de ser menos ignorante que ayer que cuando empezaste a leer.
+
+---
+
